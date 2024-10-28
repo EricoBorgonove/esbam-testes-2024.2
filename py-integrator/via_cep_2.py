@@ -1,8 +1,3 @@
-
-
-
-import requests
-
 def consulta_cep (cep):
     #fazer a requisição para a API do Via Cep
     
@@ -16,17 +11,6 @@ def consulta_cep (cep):
     if response.status_code == 200:
         #convertendo a resposta pata o json e retornando os dados
         dados_cep = response.json()
-         
-        if 'erro' in dados_cep and not 'logradouro' in dados_cep:
-            return {'erro': 'Cep não encontrado'}
-        
         return dados_cep
     else:
         return {'erro': 'Não foi possível consultar o cep.'}
-    
-#Exemplo de consulta ao cep: 69045420
-    
-cep_usuario = input("Digite um cep: ")
-
-dados = consulta_cep (cep_usuario)
-print(dados)
